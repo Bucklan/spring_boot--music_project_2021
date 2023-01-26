@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="layout/sidebar-top.html">
+<div class="container" layout:fragment="brainContent">
+    <div class="row">
+        <div class="col-md-8 offset-md-3 py-4">
+            <div class="card" style="width: 40rem;">
+                <div class="card-header">
+                    <h4 th:text="#{label.RegisterPage}"></h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{'/register'}" method="post">
+                        <div class="mb-3">
+                            <h5><label for="recipient-fullname" class="col-form-label" th:text="#{label.fullName}"></label></h5>
+                            <input type="text" class="form-control" id="recipient-fullname"
+                                   th:placeholder="#{label.insertfullname}"
+                                   name="user_full_name">
+                        </div>
+                        <div class="mb-3">
+                            <h5><label for="recipient-name" class="col-form-label" th:text="#{label.email}"></label></h5>
+                            <input type="email" class="form-control" id="recipient-name"
+                                   th:placeholder="#{label.insertEmail}"
+                                   name="user_email">
+                        </div>
+                        <div class="mb-3">
+                            <h5><label for="message-text" class="col-form-label" th:text="#{label.password}"></label></h5>
+                            <input type="password" id="message-text" class="form-control" name="user_password"
+                                   th:placeholder="#{label.insertPassword}" minlength="5"
+                                   maxlength="20" size="20">
+                        </div>
+                        <div class="mb-3">
+                            <h5><label for="message-retext" class="col-form-label" th:text="#{label.repassword}" ></label></h5>
+                            <input type="password" id="message-retext" class="form-control" name="user_re_password"
+                                    minlength="5" th:placeholder="#{label.insertrepassword}"
+                                   maxlength="20" size="20">
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-dark" th:text="#{button.signin}"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

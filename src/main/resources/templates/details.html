@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/sidebar-top.html" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="container" layout:fragment="brainContent">
+    <div class="row">
+        <div class="col offset-md-3 py-4">
+            <div class="card" style="width: 40rem;">
+                <div class="card-header">
+                    <h4 th:text="#{label.detailsMusic}"></h4>
+                </div>
+                <div class="card-body">
+                        <div class="mb-3">
+                            <h5><label for="recipient-name" class="col-form-label" th:text="#{label.artist}"></label></h5>
+                            <input type="text" class="form-control" readonly th:value="${qweqwe.singer}" id="recipient-name">
+                        </div>
+                        <div class="mb-3">
+                            <h5><label for="message-text" class="col-form-label" th:text="#{label.songname}"></label></h5>
+                            <input type="text" id="message-text" th:value="${qweqwe.songname}" readonly class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <h5><label for="message-text" class="col-form-label" th:text="#{label.date}"></label></h5>
+                            <input type="text" class="form-control"
+                                    th:value="${qweqwe.date}" readonly>
+                        </div>
+                        <div class="mt-3">
+                            <h5><label for="category_id" class="col-form-label" th:text="#{label.category}"></label></h5>
+                            <input type="text" class="form-control" id="category_id"
+                                   th:value="${qweqwe.category.category}" readonly>
+                        </div>
+                        <div class="mt-3">
+                            <a class="btn btn-success" th:href="@{'/editmusic/'+${qweqwe.id}}" sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_MODERATOR')" th:text="#{button.edit}"></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

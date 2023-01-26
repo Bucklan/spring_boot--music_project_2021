@@ -1,0 +1,56 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/sidebar-top.html"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div class="container" layout:fragment="brainContent" sec:authorize="isAuthenticated()">
+    <div class="container">
+        <div class="row">
+            <form th:action="@{'/sort'}" method="post"
+                  class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search w-25">
+                <div class="input-group">
+                    <select class="form-control bg-light border-0 small"
+                            aria-label="Search" aria-describedby="basic-addon2" name="sort">
+                        <option value="1" th:text="#{sort.artist}"></option>
+                        <option value="2" th:text="#{sort.music}"></option>
+                        <option value="3" th:text="#{sort.release}"></option>
+                        <option value="4" th:text="#{sort.caregory}"></option>
+                        <option value="5" th:text="#{sort.mixing}"></option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th th:text="#{label.artist}"></th>
+                        <th th:text="#{label.songname}"></th>
+                        <th th:text="#{label.date}"></th>
+                        <th th:text="#{label.category}"></th>
+                        <th width="7%" th:text="#{label.details}"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="qwerty : ${music}">
+                        <td th:text="${qwerty.id}"></td>
+                        <td th:text="${qwerty.singer}"></td>
+                        <td th:text="${qwerty.songname}"></td>
+                        <td th:text="${qwerty.date}"> $</td>
+                        <td th:text="${qwerty.category.category}"></td>
+                        <td>
+                            <a th:href="@{'/details/'+${qwerty.id}}" class="btn btn-dark" th:text="#{label.details}"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
